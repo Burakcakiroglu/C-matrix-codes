@@ -1,0 +1,182 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define size 100
+/*
+Name:Burak ÇAKIROÐLU/170315015/Formal Education
+Name:Enes TÜRKMEN/170315025/Formal Education
+*/
+int main()
+{
+    int number=0,number1=0,row=0,column=0,row1=0,column1=0,sum=0,x,y,z;
+    while(number1!=-1){
+    printf("%15c ============================================================================\n\n",32);
+    printf("%30c ====== MATRIX OPERATIONS PROGRAM ======\n\n",32);
+    printf("%10c PROCESS\n%10c =>1.Transpose\n%10c =>2.Addition\n%10c =>3.Multiplication\n\n",32,32,32,32);
+    printf("%15c ============================================================================\n\n",32);
+    printf("%10c =>Please choose a process:",32);
+    scanf("%d",&number);
+    srand(time(NULL));
+    switch(number)
+    {
+      case 1:
+         {
+           int number[size][size]={0};
+           printf("%10c =>Please enter a row number:",32);
+           scanf("%d",&row);
+           printf("%10c =>Please enter a column number:",32);
+           scanf("%d",&column);
+           for(y=0;y<row;y++)
+           {
+               for(x=0;x<column;x++)
+               {
+                   number[x][y]=1+(rand()%9);
+               }
+           }
+                printf("\n");
+           for(y=0;y<row;y++)
+           {
+               for(x=0;x<column;x++)
+               {
+                   printf("%10c %3d",32,number[x][y]);
+               }
+               printf("\n");
+           }
+           printf("\n%10c TRANSPOSE\n\n",32);
+           for(y=0;y<column;y++)
+           {
+               for(x=0;x<row;x++)
+               {
+                   printf("%10c %3d",32,number[y][x]);
+               }
+               printf("\n");
+           }
+            printf("\n\n");
+            break;
+        }
+    case 2:
+        {
+           int number[size][size]={0};
+           int number1[size][size]={0};
+           printf("%10c =>Please enter a row number:",32);
+           scanf("%d",&row);
+           printf("%10c =>Please enter a column number:",32);
+           scanf("%d",&column);
+           for(y=0;y<row;y++)
+           {
+               for(x=0;x<column;x++)
+               {
+                   number[x][y]=1+(rand()%9);
+               }
+           }printf("\n %10c 1.MATRIX\n",32);
+           for(y=0;y<row;y++)
+           {
+               for(x=0;x<column;x++)
+               {
+                   printf("%10c %3d",32,number[x][y]);
+               }
+               printf("\n");
+           }
+           for(y=0;y<row;y++)
+           {
+               for(x=0;x<column;x++)
+               {
+                   number1[x][y]=1+(rand()%9);
+               }
+           }printf("\n %10c 2.MATRIX\n",32);
+           for(y=0;y<row;y++)
+           {
+               for(x=0;x<column;x++)
+               {
+                   printf("%10c %3d",32,number1[x][y]);
+               }
+               printf("\n");
+           }
+           printf("\n %10c SUM MATRIX\n",32);
+            for(y=0;y<row;y++)
+           {
+               for(x=0;x<column;x++)
+               {
+                   printf("%10c %3d",32,number1[x][y]+number[x][y]);
+               }
+               printf("\n");
+           }
+            printf("\n\n");
+            break;
+        }
+    case 3:
+        {
+           int number[size][size]={0};
+           int number1[size][size]={0};
+           int number2[size][size]={0};
+           printf("%10c =>Please enter first row number:",32);
+           scanf("%d",&row);
+           printf("%10c =>Please enter first column number:",32);
+           scanf("%d",&column);
+           for(y=0;y<row;y++)
+           {
+               for(x=0;x<column;x++)
+               {
+                   number[y][x]=1+(rand()%9);
+               }
+           }printf("\n%10c 1.MATRIX\n",32);
+           for(y=0;y<row;y++)
+           {
+               for(x=0;x<column;x++)
+               {
+                   printf("%10c %3d",32,number[y][x]);
+               }
+               printf("\n");
+           }
+           printf("\n%10c=>Please enter second row number(must be equal %d):",32,column);
+           scanf("%d",&row1);
+           printf("%10c=>Please enter second column number:",32);
+           scanf("%d",&column1);
+            if(row1==column){
+           for(y=0;y<row1;y++)
+           {
+               for(x=0;x<column1;x++)
+               {
+                   number1[y][x]=1+(rand()%9);
+               }
+           }printf("\n%10c2.MATRIX\n",32);
+           for(y=0;y<row1;y++)
+           {
+               for(x=0;x<column1;x++)
+               {
+                   printf("%10c %3d",32,number1[y][x]);
+               }
+               printf("\n");
+           }
+           printf("\n%10cMULTIPLICATION MATRIX\n",32);
+
+            for(y=0;y<row;y++)
+           {
+               for(x=0;x<column1;x++)
+               {
+                  for(z=0;z<column;z++){
+                  sum +=number[y][z]*number1[z][x];
+                  }
+                  number2[y][x]=sum;
+                  sum=0;
+                  printf("%10c %3d",32,number2[y][x]);
+               }
+            printf("\n");
+           }
+        }
+            else
+            {
+                printf("\n%10c =>You entered the wrong number.",32);
+            }
+           printf("\n\n");
+           break;
+        }
+    }
+    if(number!=1 && number!=2 && number!=3)
+    {
+        printf("\n%10c =>You entered the wrong number.",32);
+    }
+         printf("\n %10c=>Please enter -1 for exit or enter random number for menu:",32);
+         scanf("%d",&number1);
+         printf("\n\n");
+    }
+}
